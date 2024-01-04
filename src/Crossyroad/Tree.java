@@ -14,5 +14,5 @@ public class Tree extends GameObject {
 		g.setColor(Color.GREEN);
 		g.fillRect(x, y, width, height);
 	}
-
+	
 }

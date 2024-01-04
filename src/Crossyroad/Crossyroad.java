@@ -1,6 +1,8 @@
 package Crossyroad;
 
+import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -15,6 +17,8 @@ public class Crossyroad extends JPanel implements ActionListener {
 	public static final int WIDTH = 500;
 	public static final int HEIGHT = 800;
 	Timer timer;
+	Font titleFont;
+	Font subTitleFont;
 	ObjectManager objectManager = new ObjectManager();
 	
 	public static void main(String[] args) {
@@ -38,13 +42,17 @@ public class Crossyroad extends JPanel implements ActionListener {
 	void updateEndState() {}
 	
 	void drawMenuState(Graphics g) {
-		
+		g.setFont(titleFont);
+		g.setColor(Color.BLACK);
+		g.drawString("CROSSYROAD", 25, 200);
+		g.setFont(subTitleFont);
+		g.drawString("Click to start", 115, 350);
 	}
 	void drawGameState(Graphics g) {
 		
 	}
 	void drawEndState(Graphics g) {
-		
+	
 	}
 @Override
 protected void paintComponent(Graphics g) {
