@@ -6,6 +6,7 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -35,6 +36,7 @@ public class Crossyroad extends JPanel implements ActionListener {
 		frame.pack();	
 		timer = new Timer(1000/60,this);
 		timer.start();
+		objectManager.addTree();
 	}
 	
 	void updateMenuState() {}
@@ -49,7 +51,7 @@ public class Crossyroad extends JPanel implements ActionListener {
 		g.drawString("Click to start", 115, 350);
 	}
 	void drawGameState(Graphics g) {
-		
+		objectManager.draw(g);
 	}
 	void drawEndState(Graphics g) {
 	

@@ -15,4 +15,7 @@ public class Tree extends GameObject {
 		g.fillRect(x, y, width, height);
 	}
 	
+	void update() {
+		
+	}
 }
