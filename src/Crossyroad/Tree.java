@@ -16,6 +16,7 @@ public class Tree extends GameObject {
 	}
 	
 	void update() {
-		
+		y+=GameObject.speed;
+		collisionBox.setRect(x, y, width, height);
 	}
 }

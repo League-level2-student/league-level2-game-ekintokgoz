@@ -6,13 +6,15 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
-public class Crossyroad extends JPanel implements ActionListener {
+public class Crossyroad extends JPanel implements ActionListener, KeyListener {
 	
 	JFrame frame = new JFrame();
 	public static final int WIDTH = 500;
@@ -34,9 +36,10 @@ public class Crossyroad extends JPanel implements ActionListener {
 		frame.add(this);
 		setPreferredSize(new Dimension(WIDTH,HEIGHT));
 		frame.pack();	
-		timer = new Timer(1000/60,this);
+		timer = new Timer(1000/30,this);
 		timer.start();
-		objectManager.addTree();
+		objectManager.addTrees();
+		frame.addKeyListener(this);
 	}
 	
 	void updateMenuState() {}
@@ -63,6 +66,35 @@ protected void paintComponent(Graphics g) {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 	repaint();
+	objectManager.update();
+		
+	}
+
+	@Override
+	public void keyPressed(KeyEvent e) {
+		if(e.getKeyCode()==KeyEvent.VK_UP) {
+			objectManager.player.hopUp();
+		}
+		if(e.getKeyCode()==KeyEvent.VK_DOWN) {
+			objectManager.player.hopDown();
+		}
+		if(e.getKeyCode()==KeyEvent.VK_RIGHT) {
+			objectManager.player.hopRight(); 
+		}
+		if(e.getKeyCode()==KeyEvent.VK_LEFT) {
+			objectManager.player.hopLeft();
+		}
+	}
+
+	@Override
+	public void keyReleased(KeyEvent e) {
+		
+		
+	}
+
+	@Override
+	public void keyTyped(KeyEvent arg0) {
+
 		
 	}
 	
