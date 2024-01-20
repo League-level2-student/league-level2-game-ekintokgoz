@@ -8,7 +8,7 @@ public class ObjectManager {
 	
 	ArrayList <Tree> trees = new ArrayList();
 	Random random = new Random();
-	GamePlayer player = new GamePlayer(200,50,50,50);
+	GamePlayer player = new GamePlayer(Crossyroad.WIDTH/2,Crossyroad.HEIGHT/2,50,50);
 	
 	ObjectManager() {
 		player.setObjectManager(this);
@@ -37,5 +37,18 @@ public class ObjectManager {
 		addTree(50,50);
 	}
 	
+	void shiftWorldDown(int amount) {
+		for(Tree t: trees) {
+			t.y+=amount;
+			t.collisionBox.setRect(t.x, t.y, t.width, t.height);
+		}
+	}
+	
+	void shiftWorldUp(int amount) {
+		for(Tree t: trees) {
+			t.y-=amount;
+			t.collisionBox.setRect(t.x, t.y, t.width, t.height);
+		}
+	}
 	
 }
