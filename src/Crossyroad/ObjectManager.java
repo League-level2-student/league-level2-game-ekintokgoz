@@ -8,10 +8,12 @@ public class ObjectManager {
 	
 	ArrayList <Tree> trees = new ArrayList();
 	Random random = new Random();
-	GamePlayer player = new GamePlayer(Crossyroad.WIDTH/2,Crossyroad.HEIGHT/2,50,50);
+	GamePlayer player = new GamePlayer(Crossyroad.WIDTH/2,Crossyroad.HEIGHT/2-25,50,50);
+	CameraObject cam = new CameraObject(player.x, player.y);
+	public static ObjectManager manager;
 	
 	ObjectManager() {
-		player.setObjectManager(this);
+		manager=this;
 	}
 	
 	void addTree(int x, int y) {

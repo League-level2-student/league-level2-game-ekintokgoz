@@ -73,16 +73,16 @@ protected void paintComponent(Graphics g) {
 	@Override
 	public void keyPressed(KeyEvent e) {
 		if(e.getKeyCode()==KeyEvent.VK_UP) {
-			objectManager.player.hopUp();
+			objectManager.player.moveY(true);
 		}
 		if(e.getKeyCode()==KeyEvent.VK_DOWN) {
-			objectManager.player.hopDown();
+			objectManager.player.moveY(false);
 		}
 		if(e.getKeyCode()==KeyEvent.VK_RIGHT) {
-			objectManager.player.hopRight(); 
+			objectManager.player.moveX(true); 
 		}
 		if(e.getKeyCode()==KeyEvent.VK_LEFT) {
-			objectManager.player.hopLeft();
+			objectManager.player.moveX(false);
 		}
 	}
 

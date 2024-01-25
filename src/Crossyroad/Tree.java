@@ -12,7 +12,7 @@ public class Tree extends GameObject {
 	
 	void draw(Graphics g) {
 		g.setColor(Color.GREEN);
-		g.fillRect(x, y, width, height);
+		g.fillRect(x, Crossyroad.HEIGHT/2-25+(y-ObjectManager.manager.cam.y), width, height);
 	}
 	
 	void update() {
