@@ -39,6 +39,7 @@ public class Crossyroad extends JPanel implements ActionListener, KeyListener {
 		timer = new Timer(1000/30,this);
 		timer.start();
 		objectManager.addTrees();
+		objectManager.addRoads();
 		frame.addKeyListener(this);
 	}
 	
@@ -79,10 +80,10 @@ protected void paintComponent(Graphics g) {
 			objectManager.player.moveY(false);
 		}
 		if(e.getKeyCode()==KeyEvent.VK_RIGHT) {
-			objectManager.player.moveX(true); 
+			objectManager.player.moveX(false); 
 		}
 		if(e.getKeyCode()==KeyEvent.VK_LEFT) {
-			objectManager.player.moveX(false);
+			objectManager.player.moveX(true);
 		}
 	}
 

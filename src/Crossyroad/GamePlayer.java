@@ -45,49 +45,25 @@ public class GamePlayer extends GameObject {
 		}
 	}
 
-	void hopDown() {
-		y+=width;
-		collisionBox.setRect(x, y, width, height);
-		if(checkCollision(collisionBox)) {
-			y-=width;
-			collisionBox.setRect(x, y, width, height);
-		}
-	}
-
-	void hopRight() {
-		x+=width;
-		collisionBox.setRect(x, y, width, height);
-		if(checkCollision(collisionBox)) {
-			x-=width;
-			collisionBox.setRect(x, y, width, height);
-		}
-	}
-
-	void hopLeft() {
-		x-=width;
-		collisionBox.setRect(x, y, width, height);
-		if(checkCollision(collisionBox)) {
-			x+=width;
-			collisionBox.setRect(x, y, width, height);
-		}
-	}
-
 	void moveX(boolean left) {
 		if(left==true) {
-			int px = this.x+width;
-			Rectangle predictedBox = new Rectangle(px,y, width, height);
-			if(!checkCollision(predictedBox)) {
-				x+=width;
-				collisionBox.setRect(px, y, width, height);
-				ObjectManager.manager.cam.x+=width;
-			}
-		} else {
 			int px = this.x-width;
 			Rectangle predictedBox = new Rectangle(px,y, width, height);
 			if(!checkCollision(predictedBox)) {
 				x-=width;
 				collisionBox.setRect(px, y, width, height);
 				ObjectManager.manager.cam.x-=width;
+			}
+			if(predictedBox.x < 0) {
+				x+=width;
+			}
+		} else {
+			int px = this.x+width;
+			Rectangle predictedBox = new Rectangle(px,y, width, height);
+			if(!checkCollision(predictedBox)) {
+				x+=width;
+				collisionBox.setRect(px, y, width, height);
+				ObjectManager.manager.cam.x+=width;
 			}
 		}
 	}

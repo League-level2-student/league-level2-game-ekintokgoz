@@ -8,8 +8,9 @@ public class ObjectManager {
 	
 	ArrayList <Tree> trees = new ArrayList();
 	Random random = new Random();
-	GamePlayer player = new GamePlayer(Crossyroad.WIDTH/2,Crossyroad.HEIGHT/2-25,50,50);
+	GamePlayer player = new GamePlayer(Crossyroad.WIDTH/2,Crossyroad.HEIGHT/2,50,50);
 	CameraObject cam = new CameraObject(player.x, player.y);
+	ArrayList <Road> roads = new ArrayList();
 	public static ObjectManager manager;
 	
 	ObjectManager() {
@@ -20,9 +21,16 @@ public class ObjectManager {
 		trees.add(new Tree(x,y,50,50));
 	}
 	
+	void addRoad(int y, int height) {
+		roads.add(new Road(y, height));
+	}
+	
 	void draw(Graphics g) {
 		for(int i = 0; i<trees.size(); i++) {
 			trees.get(i).draw(g); 
+		}
+		for(Road r: roads) {
+			r.draw(g);
 		}
 		player.draw(g);
 	}
@@ -36,7 +44,19 @@ public class ObjectManager {
 	}
 	
 	void addTrees() {
-		addTree(50,50);
+		for(int i = 0; i<10; i++) {
+			addTree(50*i,700);
+		}
+		for(int i = 0; i<3; i++) {
+			addTree(50*i,50);
+		}
+		for(int i = 0; i<3; i++) {
+			addTree(50*i+350,50);
+		}
+	}
+	
+	void addRoads() {
+		addRoad(-200,150);
 	}
 	
 	void shiftWorldDown(int amount) {
