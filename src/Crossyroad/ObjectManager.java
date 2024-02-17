@@ -81,7 +81,7 @@ public class ObjectManager {
 	void checkCarCollision() {
 		for(Road r: roads) {
 			for(Car c: r.cars) {
-				c.collisionBox.setRect(c.x, c.y, c.width, c.height);
+				
 			}
 		}
 	}
