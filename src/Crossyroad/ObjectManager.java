@@ -40,6 +40,9 @@ public class ObjectManager {
 			trees.get(i).update();
 		}
 		player.update();
+		for(int i = 0; i<roads.size(); i++) {
+			roads.get(i).update();
+		}
 		
 	}
 	
@@ -56,7 +59,9 @@ public class ObjectManager {
 	}
 	
 	void addRoads() {
-		addRoad(-200,150);
+		addRoad(-200,50);
+		addRoad(-150,50);
+		addRoad(-100,50);
 	}
 	
 	void shiftWorldDown(int amount) {
@@ -70,6 +75,14 @@ public class ObjectManager {
 		for(Tree t: trees) {
 			t.y-=amount;
 			t.collisionBox.setRect(t.x, t.y, t.width, t.height);
+		}
+	}
+	
+	void checkCarCollision() {
+		for(Road r: roads) {
+			for(Car c: r.cars) {
+				c.collisionBox.setRect(c.x, c.y, c.width, c.height);
+			}
 		}
 	}
 	

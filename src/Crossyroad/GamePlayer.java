@@ -23,28 +23,6 @@ public class GamePlayer extends GameObject {
 		}
 	}
 
-	void hopUp() {
-		//y-=width;
-		if(y>Crossyroad.HEIGHT/3) {
-			ObjectManager.manager.shiftWorldDown(height);	
-			y-=height;
-			collisionBox.setRect(x, y, width, height);
-			if(checkCollision(collisionBox)) {
-				y+=width;
-				ObjectManager.manager.shiftWorldUp(height);
-				collisionBox.setRect(x, y, width, height);
-			}
-		} else {
-			ObjectManager.manager.shiftWorldDown(height);
-			collisionBox.setRect(x, y, width, height);
-			if(checkCollision(collisionBox)) {
-				y+=width;
-				ObjectManager.manager.shiftWorldUp(height);
-				collisionBox.setRect(x, y, width, height);
-			}
-		}
-	}
-
 	void moveX(boolean left) {
 		if(left==true) {
 			int px = this.x-width;

@@ -8,7 +8,7 @@ public class GameObject {
 	int y;
 	int width;
 	int height;
-	public static final int speed = 1;
+	public int speed = 1;
 	Rectangle collisionBox;
 	
 	GameObject(int x, int y, int width, int height) {
