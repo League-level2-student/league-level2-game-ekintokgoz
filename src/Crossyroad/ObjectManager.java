@@ -4,6 +4,8 @@ import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.Random;
 
+import javax.swing.JOptionPane;
+
 public class ObjectManager {
 	
 	ArrayList <Tree> trees = new ArrayList();
@@ -43,7 +45,7 @@ public class ObjectManager {
 		for(int i = 0; i<roads.size(); i++) {
 			roads.get(i).update();
 		}
-		
+		checkCarCollision();
 	}
 	
 	void addTrees() {
@@ -81,7 +83,10 @@ public class ObjectManager {
 	void checkCarCollision() {
 		for(Road r: roads) {
 			for(Car c: r.cars) {
-				
+				if(c.collisionBox.intersects(player.collisionBox)) {
+					Crossyroad.currentState = 2;
+					
+				}
 			}
 		}
 	}

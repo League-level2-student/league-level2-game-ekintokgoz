@@ -19,9 +19,13 @@ public class Crossyroad extends JPanel implements ActionListener, KeyListener {
 	JFrame frame = new JFrame();
 	public static final int WIDTH = 500;
 	public static final int HEIGHT = 800;
+	static final int MENU = 0;
+	static final int GAME = 1;
+	static final int END = 2;
+	static int currentState = MENU;
 	Timer timer;
-	Font titleFont;
-	Font subTitleFont;
+	Font titleFont = new Font("Arial", Font.BOLD, 40);
+	Font subTitleFont = new Font("Arial", Font.ITALIC, 25);
 	ObjectManager objectManager = new ObjectManager();
 	
 	public static void main(String[] args) {
@@ -48,21 +52,35 @@ public class Crossyroad extends JPanel implements ActionListener, KeyListener {
 	void updateEndState() {}
 	
 	void drawMenuState(Graphics g) {
+		g.setColor(Color.BLUE);
+		g.fillRect(0, 0, WIDTH,HEIGHT);
 		g.setFont(titleFont);
 		g.setColor(Color.BLACK);
-		g.drawString("CROSSYROAD", 25, 200);
+		g.drawString("CROSSYROAD", 100, 200);
 		g.setFont(subTitleFont);
-		g.drawString("Click to start", 115, 350);
+		g.drawString("Press Space to Start", 135, 350);
 	}
 	void drawGameState(Graphics g) {
 		objectManager.draw(g);
 	}
 	void drawEndState(Graphics g) {
-	
+		g.setColor(Color.RED);
+		g.fillRect(0, 0, WIDTH,HEIGHT);
+		g.setFont(titleFont);
+		g.setColor(Color.BLACK);
+		g.drawString("GAME OVER", 125, 200);
+		g.setFont(subTitleFont);
+		g.drawString("Press Enter to Play Again", 100, 350);
 	}
 @Override
 protected void paintComponent(Graphics g) {
-	objectManager.draw(g);
+	if(currentState == MENU) {
+		drawMenuState(g);
+	}else if(currentState == GAME) {
+		drawGameState(g);
+	}else if(currentState == END) {
+		drawEndState(g);
+	}
 }
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -73,6 +91,12 @@ protected void paintComponent(Graphics g) {
 
 	@Override
 	public void keyPressed(KeyEvent e) {
+		if(e.getKeyCode()==KeyEvent.VK_SPACE) {
+			currentState = GAME;
+		}
+		if(e.getKeyCode()==KeyEvent.VK_ENTER) {
+			currentState = MENU;
+		}
 		if(e.getKeyCode()==KeyEvent.VK_UP) {
 			objectManager.player.moveY(true);
 		}
