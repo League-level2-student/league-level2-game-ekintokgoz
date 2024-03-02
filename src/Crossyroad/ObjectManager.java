@@ -48,6 +48,13 @@ public class ObjectManager {
 		checkCarCollision();
 	}
 	
+	void resetPos() {
+		player = new GamePlayer(Crossyroad.WIDTH/2,Crossyroad.HEIGHT/2,50,50);
+		cam = new CameraObject(player.x, player.y);
+		roads = new ArrayList<>();
+		addRoads();
+	}
+	
 	void addTrees() {
 		for(int i = 0; i<10; i++) {
 			addTree(50*i,700);
@@ -57,13 +64,27 @@ public class ObjectManager {
 		}
 		for(int i = 0; i<3; i++) {
 			addTree(50*i+350,50);
-		}
+		}	
+			addTree(300,-400);
+			addTree(350,-400);
+			addTree(400,-400);
+			addTree(50,-350);
+			addTree(100,-350);
+			addTree(350,-250);
+			addTree(300,-250);
 	}
 	
 	void addRoads() {
 		addRoad(-200,50);
 		addRoad(-150,50);
 		addRoad(-100,50);
+		
+		addRoad(-450,50);
+		addRoad(-500,50);
+		addRoad(-550,50);
+		addRoad(-600,50);
+		addRoad(-650,50);
+		addRoad(-700,50);
 	}
 	
 	void shiftWorldDown(int amount) {

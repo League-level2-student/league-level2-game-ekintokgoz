@@ -10,12 +10,13 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 
+import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
 public class Crossyroad extends JPanel implements ActionListener, KeyListener {
-	
+
 	JFrame frame = new JFrame();
 	public static final int WIDTH = 500;
 	public static final int HEIGHT = 800;
@@ -23,17 +24,20 @@ public class Crossyroad extends JPanel implements ActionListener, KeyListener {
 	static final int GAME = 1;
 	static final int END = 2;
 	static int currentState = MENU;
+	public static BufferedImage image;
+	public static boolean needImage = true;
+	public static boolean gotImage = false;	
 	Timer timer;
 	Font titleFont = new Font("Arial", Font.BOLD, 40);
 	Font subTitleFont = new Font("Arial", Font.ITALIC, 25);
 	ObjectManager objectManager = new ObjectManager();
-	
+
 	public static void main(String[] args) {
 		Crossyroad crossyroad = new Crossyroad();
 		crossyroad.run();
 
 	}
-	
+
 	void run() {
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -46,11 +50,11 @@ public class Crossyroad extends JPanel implements ActionListener, KeyListener {
 		objectManager.addRoads();
 		frame.addKeyListener(this);
 	}
-	
+
 	void updateMenuState() {}
 	void updateGameState() {}
 	void updateEndState() {}
-	
+
 	void drawMenuState(Graphics g) {
 		g.setColor(Color.BLUE);
 		g.fillRect(0, 0, WIDTH,HEIGHT);
@@ -70,57 +74,72 @@ public class Crossyroad extends JPanel implements ActionListener, KeyListener {
 		g.setColor(Color.BLACK);
 		g.drawString("GAME OVER", 125, 200);
 		g.setFont(subTitleFont);
-		g.drawString("Press Enter to Play Again", 100, 350);
+		g.drawString("Press Space to Play Again", 100, 350);
 	}
-@Override
-protected void paintComponent(Graphics g) {
-	if(currentState == MENU) {
-		drawMenuState(g);
-	}else if(currentState == GAME) {
-		drawGameState(g);
-	}else if(currentState == END) {
-		drawEndState(g);
+	@Override
+	protected void paintComponent(Graphics g) {
+		if(currentState == MENU) {
+			drawMenuState(g);
+		}else if(currentState == GAME) {
+			drawGameState(g);
+		}else if(currentState == END) {
+			drawEndState(g);
+		}
 	}
-}
+	void loadImage(String imageFile) {
+		if (needImage) {
+			try {
+				image = ImageIO.read(this.getClass().getResourceAsStream(imageFile));
+				gotImage = true;
+			} catch (Exception e) {
+
+			}
+			needImage = false;
+		}
+	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
-	repaint();
-	objectManager.update();
-		
+		repaint();
+		objectManager.update();
+
 	}
 
 	@Override
 	public void keyPressed(KeyEvent e) {
 		if(e.getKeyCode()==KeyEvent.VK_SPACE) {
-			currentState = GAME;
+			if(currentState == MENU) {
+				currentState = GAME;
+			}  if(currentState == END) {
+				currentState = MENU;
+				objectManager.resetPos();
+			}
 		}
-		if(e.getKeyCode()==KeyEvent.VK_ENTER) {
-			currentState = MENU;
-		}
-		if(e.getKeyCode()==KeyEvent.VK_UP) {
-			objectManager.player.moveY(true);
-		}
-		if(e.getKeyCode()==KeyEvent.VK_DOWN) {
-			objectManager.player.moveY(false);
-		}
-		if(e.getKeyCode()==KeyEvent.VK_RIGHT) {
-			objectManager.player.moveX(false); 
-		}
-		if(e.getKeyCode()==KeyEvent.VK_LEFT) {
-			objectManager.player.moveX(true);
+		if(currentState == GAME) {
+			if(e.getKeyCode()==KeyEvent.VK_UP) {
+				objectManager.player.moveY(true);
+			}
+			if(e.getKeyCode()==KeyEvent.VK_DOWN) {
+				objectManager.player.moveY(false);
+			}
+			if(e.getKeyCode()==KeyEvent.VK_RIGHT) {
+				objectManager.player.moveX(false); 
+			}
+			if(e.getKeyCode()==KeyEvent.VK_LEFT) {
+				objectManager.player.moveX(true);
+			}
 		}
 	}
 
 	@Override
 	public void keyReleased(KeyEvent e) {
-		
-		
+
+
 	}
 
 	@Override
 	public void keyTyped(KeyEvent arg0) {
 
-		
+
 	}
-	
+
 }
