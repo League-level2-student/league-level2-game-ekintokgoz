@@ -49,6 +49,7 @@ public class Crossyroad extends JPanel implements ActionListener, KeyListener {
 		objectManager.addTrees();
 		objectManager.addRoads();
 		frame.addKeyListener(this);
+		setBackground(new Color(114, 247, 143));
 	}
 
 	void updateMenuState() {}

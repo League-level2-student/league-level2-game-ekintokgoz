@@ -15,7 +15,7 @@ public class GamePlayer extends GameObject {
 	GamePlayer(int x, int y, int width, int height) {
 		super(x, y, width, height);
 		if(needImage) {
-			loadImage("chicken.jpeg");
+			loadImage("chicken.png");
 		}
 	}
 
@@ -86,6 +86,7 @@ public class GamePlayer extends GameObject {
 		}
 		return false;
 	}
+	
 	void loadImage(String imageFile) {
 		if (needImage) {
 			try {
