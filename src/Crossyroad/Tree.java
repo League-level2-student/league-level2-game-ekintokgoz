@@ -19,9 +19,9 @@ public class Tree extends GameObject {
 	}
 	
 	void draw(Graphics g) {
-		if (gotImage) {
+	if (gotImage) {
 			g.drawImage(image, x, Crossyroad.HEIGHT/2-25+(y-ObjectManager.manager.cam.y), width, height, null);
-		} else {
+		} else {	
 		g.setColor(Color.GREEN);
 		g.fillRect(x, Crossyroad.HEIGHT/2-25+(y-ObjectManager.manager.cam.y), width, height);
 	}

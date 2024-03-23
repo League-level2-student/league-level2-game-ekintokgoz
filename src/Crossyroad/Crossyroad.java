@@ -31,6 +31,7 @@ public class Crossyroad extends JPanel implements ActionListener, KeyListener {
 	Font titleFont = new Font("Arial", Font.BOLD, 40);
 	Font subTitleFont = new Font("Arial", Font.ITALIC, 25);
 	ObjectManager objectManager = new ObjectManager();
+	
 
 	public static void main(String[] args) {
 		Crossyroad crossyroad = new Crossyroad();
@@ -49,7 +50,7 @@ public class Crossyroad extends JPanel implements ActionListener, KeyListener {
 		objectManager.addTrees();
 		objectManager.addRoads();
 		frame.addKeyListener(this);
-		setBackground(new Color(114, 247, 143));
+		setBackground(new Color(108, 235, 120));
 	}
 
 	void updateMenuState() {}
@@ -142,5 +143,7 @@ public class Crossyroad extends JPanel implements ActionListener, KeyListener {
 
 
 	}
+	
+	
 
 }

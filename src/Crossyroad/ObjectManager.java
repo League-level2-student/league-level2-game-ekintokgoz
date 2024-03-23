@@ -70,8 +70,21 @@ public class ObjectManager {
 			addTree(400,-400);
 			addTree(50,-350);
 			addTree(100,-350);
+			addTree(50,-300);
+			addTree(0,-300);
 			addTree(350,-250);
 			addTree(300,-250);
+			
+			addTree(250,-750);
+			addTree(200,-750);
+			addTree(150,-750);
+			addTree(450,-750);
+			addTree(400,-750);
+			addTree(300,-900);
+			addTree(250,-900);
+			addTree(250,-950);
+			addTree(300,-950);
+			addTree(350,-950);
 	}
 	
 	void addRoads() {
@@ -85,6 +98,9 @@ public class ObjectManager {
 		addRoad(-600,50);
 		addRoad(-650,50);
 		addRoad(-700,50);
+		
+		addRoad(-800,50);
+		addRoad(-850,50);
 	}
 	
 	void shiftWorldDown(int amount) {
