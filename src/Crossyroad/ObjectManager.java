@@ -27,6 +27,10 @@ public class ObjectManager {
 		roads.add(new Road(y, height));
 	}
 	
+	void addTrainTrack(int y, int height) {
+		
+	}
+	
 	void draw(Graphics g) {
 		for(int i = 0; i<trees.size(); i++) {
 			trees.get(i).draw(g); 
