@@ -13,6 +13,7 @@ public class ObjectManager {
 	GamePlayer player = new GamePlayer(Crossyroad.WIDTH/2,Crossyroad.HEIGHT/2,50,50);
 	CameraObject cam = new CameraObject(player.x, player.y);
 	ArrayList <Road> roads = new ArrayList();
+	ArrayList <TrainTracks> tracks = new ArrayList();
 	public static ObjectManager manager;
 	
 	ObjectManager() {
@@ -28,7 +29,7 @@ public class ObjectManager {
 	}
 	
 	void addTrainTrack(int y, int height) {
-		
+		tracks.add(new TrainTracks(y, height));
 	}
 	
 	void draw(Graphics g) {
@@ -38,7 +39,11 @@ public class ObjectManager {
 		for(Road r: roads) {
 			r.draw(g);
 		}
+		for (TrainTracks t: tracks) {
+			t.draw(g);
+		}
 		player.draw(g);
+		
 	}
 	
 	void update() {
@@ -48,6 +53,11 @@ public class ObjectManager {
 		player.update();
 		for(int i = 0; i<roads.size(); i++) {
 			roads.get(i).update();
+		}
+		for(int i = 0; i<tracks.size(); i++) {
+			if(player.y == tracks.get(i).y+100) {
+				tracks.get(i).addTrain();
+			} tracks.get(i).update();
 		}
 		checkCarCollision();
 	}
@@ -105,6 +115,10 @@ public class ObjectManager {
 		
 		addRoad(-800,50);
 		addRoad(-850,50);
+	}
+	
+	void addTracks() {
+		addTrainTrack(-1050, 50);
 	}
 	
 	void shiftWorldDown(int amount) {

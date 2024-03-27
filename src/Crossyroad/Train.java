@@ -5,8 +5,9 @@ import java.awt.Graphics;
 
 public class Train extends GameObject {
 
-	Train(int x, int y, int width, int height) {
+	Train(int x, int y, int width, int height, int speed) {
 		super(x, y, width, height);
+		this.speed = speed;
 
 	}
 	
