@@ -21,7 +21,8 @@ public class TrainTracks extends GameObject{
 	
 	void addTrain() {
 		if(train == null) {
-		train = new Train(Crossyroad.WIDTH+100,y,2000,50,50);
+		train = new Train(Crossyroad.WIDTH+1500,y,3500,50,50);
+		ObjectManager.playSound("TrainDing.wav");
 		}
 	}
 	

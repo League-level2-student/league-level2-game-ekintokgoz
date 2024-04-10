@@ -1,10 +1,12 @@
 package Crossyroad;
 
 import java.awt.Graphics;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Random;
 
-import javax.swing.JOptionPane;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 
 public class ObjectManager {
 	
@@ -55,7 +57,7 @@ public class ObjectManager {
 			roads.get(i).update();
 		}
 		for(int i = 0; i<tracks.size(); i++) {
-			if(player.y == tracks.get(i).y+100) {
+			if(player.y == tracks.get(i).y+200) {
 				tracks.get(i).addTrain();
 			} tracks.get(i).update();
 		}
@@ -118,7 +120,7 @@ public class ObjectManager {
 	}
 	
 	void addTracks() {
-		addTrainTrack(-1050, 50);
+		addTrainTrack(-1100, 50);
 	}
 	
 	void shiftWorldDown(int amount) {
@@ -145,5 +147,27 @@ public class ObjectManager {
 			}
 		}
 	}
+	
+	public static void playSound(String soundFile) {
+		String path = "src/Crossyroad/";
+			File sound = new File(path+soundFile);
+			if (sound.exists()) {
+				new Thread(() -> {
+				try {
+					Clip clip = AudioSystem.getClip();
+					clip.open(AudioSystem.getAudioInputStream(sound));
+					clip.start();
+					Thread.sleep(clip.getMicrosecondLength()/1000);
+				}
+				catch (Exception e) {
+					System.out.println("Could not play this sound");
+				}}).start();
+	 		}
+			else {
+				System.out.println("File does not exist");
+			}
+		
+	}
+    
 	
 }
