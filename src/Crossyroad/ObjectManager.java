@@ -22,6 +22,14 @@ public class ObjectManager {
 		manager=this;
 	}
 	
+	void resetAll() {
+		roads = new ArrayList();
+		tracks = new ArrayList();
+		addRoads();
+		addTracks();
+		
+	}
+	
 	void addTree(int x, int y) {
 		trees.add(new Tree(x,y,50,50));
 	}
@@ -101,6 +109,52 @@ public class ObjectManager {
 			addTree(250,-950);
 			addTree(300,-950);
 			addTree(350,-950);
+			addTree(0,-1050);
+			addTree(50,-1050);
+			addTree(450,-1050);
+			addTree(0,-1400);
+			addTree(100,-1400);
+			addTree(150,-1400);
+			addTree(200,-1400);
+			addTree(250,-1400);
+			addTree(300,-1400);
+			addTree(400,-1400);
+			addTree(450,-1400);
+			addTree(150,-1450);
+			addTree(200,-1450);
+			addTree(100,-1900);
+			addTree(150,-1900);
+			addTree(200,-1900);
+			addTree(400,-1900);
+			addTree(450,-1900);
+			addTree(0,-1950);
+			addTree(50,-1950);
+			addTree(250,-2050);
+			addTree(300,-2050);
+			addTree(100,-2050);
+			addTree(150,-2050);
+			addTree(0,-2200);
+			addTree(50,-2200);
+			addTree(350,-2200);
+			addTree(400,-2200);
+			addTree(450,-2200);
+			addTree(150,-2300);
+			addTree(200,-2300);
+			addTree(450,-2300);
+			addTree(350,-2450);
+			addTree(400,-2450);
+			addTree(100,-2450);
+			addTree(150,-2450);
+			addTree(450,-2550);
+			addTree(400,-2550);
+			addTree(350,-2550);
+			addTree(0,-2600);
+			addTree(50,-2600);
+			addTree(0,-2550);
+			addTree(350,-2700);
+			addTree(400,-2700);
+			addTree(100,-2700);
+			addTree(150,-2700);
 	}
 	
 	void addRoads() {
@@ -117,10 +171,34 @@ public class ObjectManager {
 		
 		addRoad(-800,50);
 		addRoad(-850,50);
+		
+		addRoad(-1250,50);
+		addRoad(-1300,50);
+		addRoad(-1350,50);
+		
+		addRoad(-1500,50);
+		addRoad(-1550,50);
+		addRoad(-1600,50);
+		addRoad(-1650,50);
+		
+		addRoad(-1750,50);
+		addRoad(-1800,50);
+		addRoad(-1850,50);
+		
+		addRoad(-2000,50);
+		addRoad(-2100,50);
+		addRoad(-2150,50);
+		addRoad(-2250,50);
+		addRoad(-2350,50);
+		addRoad(-2400,50);
+		
 	}
 	
 	void addTracks() {
 		addTrainTrack(-1100, 50);
+		addTrainTrack(-1700, 50);
+		addTrainTrack(-2500, 50);
+		addTrainTrack(-2650, 50);
 	}
 	
 	void shiftWorldDown(int amount) {
@@ -142,9 +220,18 @@ public class ObjectManager {
 			for(Car c: r.cars) {
 				if(c.collisionBox.intersects(player.collisionBox)) {
 					Crossyroad.currentState = 2;
-					
+					resetAll();
+					return;
 				}
 			}
+		}
+		
+		for(TrainTracks r: tracks) {
+				if(r.train!=null && r.train.collisionBox.intersects(player.collisionBox)) {
+					Crossyroad.currentState = 2;
+					resetAll();
+					return;
+				}
 		}
 	}
 	

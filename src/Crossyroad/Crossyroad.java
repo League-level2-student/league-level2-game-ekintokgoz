@@ -117,6 +117,24 @@ public class Crossyroad extends JPanel implements ActionListener, KeyListener {
 				objectManager.resetPos();
 			}
 		}
+//		if(currentState == GAME) {
+//			if(e.getKeyCode()==KeyEvent.VK_UP) {
+//				objectManager.player.moveY(true);
+//			}
+//			if(e.getKeyCode()==KeyEvent.VK_DOWN) {
+//				objectManager.player.moveY(false);
+//			}
+//			if(e.getKeyCode()==KeyEvent.VK_RIGHT) {
+//				objectManager.player.moveX(false); 
+//			}
+//			if(e.getKeyCode()==KeyEvent.VK_LEFT) {
+//				objectManager.player.moveX(true);
+//			}
+//		}
+	}
+
+	@Override
+	public void keyReleased(KeyEvent e) {
 		if(currentState == GAME) {
 			if(e.getKeyCode()==KeyEvent.VK_UP) {
 				objectManager.player.moveY(true);
@@ -131,11 +149,6 @@ public class Crossyroad extends JPanel implements ActionListener, KeyListener {
 				objectManager.player.moveX(true);
 			}
 		}
-	}
-
-	@Override
-	public void keyReleased(KeyEvent e) {
-
 
 	}
 
