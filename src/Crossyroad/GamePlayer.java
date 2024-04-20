@@ -23,6 +23,8 @@ public class GamePlayer extends GameObject {
 	void draw(Graphics g) {
 		if (gotImage) {
 			g.drawImage(image, x, Crossyroad.HEIGHT/2-width/2, width, height, null);
+//			g.drawRect(collisionBox.x + collisionBox.width/6, Crossyroad.HEIGHT/2-width/2 + collisionBox.height/6, collisionBox.width-collisionBox.width/3, collisionBox.height - collisionBox.height/3);
+
 		} else {
 		g.setColor(Color.RED);
 		g.fillRect(x, Crossyroad.HEIGHT/2-width/2, width, height);
@@ -41,7 +43,7 @@ public class GamePlayer extends GameObject {
 			Rectangle predictedBox = new Rectangle(px,y, width, height);
 			if(!checkCollision(predictedBox)) {
 				x-=width;
-				collisionBox.setRect(px, y, width, height);
+				collisionBox.setRect(px + width/6, y + height/6, width - width/3, height - height/3);
 				ObjectManager.manager.cam.x-=width;
 			}
 			if(predictedBox.x < 0) {
@@ -52,7 +54,7 @@ public class GamePlayer extends GameObject {
 			Rectangle predictedBox = new Rectangle(px,y, width, height);
 			if(!checkCollision(predictedBox)) {
 				x+=width;
-				collisionBox.setRect(px, y, width, height);
+				collisionBox.setRect(px + width/6, y + height/6, width - width/3, height - height/3);
 				ObjectManager.manager.cam.x+=width;
 			}
 		}
@@ -64,7 +66,7 @@ public class GamePlayer extends GameObject {
 			Rectangle predictedBox = new Rectangle(x,py,width,height);
 			if(!checkCollision(predictedBox)) {
 				y-=width;
-				collisionBox.setRect(x, py, width, height);
+				collisionBox.setRect(x + width/6, py + height/6, width - width/3, height - height/3);
 				ObjectManager.manager.cam.y-=width;
 			}
 		}else {
@@ -72,7 +74,7 @@ public class GamePlayer extends GameObject {
 			Rectangle predictedBox = new Rectangle(x,py,width,height);
 			if(!checkCollision(predictedBox)) {
 				y+=width;
-				collisionBox.setRect(x, py, width, height);
+				collisionBox.setRect(x + width/6, py + height/6, width - width/3, height - height/3);
 				ObjectManager.manager.cam.y+=width;
 			}
 		}

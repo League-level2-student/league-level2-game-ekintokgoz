@@ -165,7 +165,7 @@ public class ObjectManager {
 		addRoad(-450,50);
 		addRoad(-500,50);
 		addRoad(-550,50);
-		addRoad(-600,50);
+//		addRoad(-600,50);
 		addRoad(-650,50);
 		addRoad(-700,50);
 		
@@ -192,6 +192,22 @@ public class ObjectManager {
 		addRoad(-2350,50);
 		addRoad(-2400,50);
 		
+		addRoad(-2750,50);
+		addRoad(-2800,50);
+		addRoad(-2850,50);
+		addRoad(-2900,50);
+		addRoad(-2950,50);
+		addRoad(-3000,50);
+		addRoad(-3100,50);
+		addRoad(-3150,50);
+		addRoad(-3200,50);
+		addRoad(-3250,50);
+		addRoad(-3350,50);
+		addRoad(-3400,50);
+		addRoad(-3450,50);
+		addRoad(-3500,50);
+		addRoad(-3550,50);
+		
 	}
 	
 	void addTracks() {
@@ -199,6 +215,8 @@ public class ObjectManager {
 		addTrainTrack(-1700, 50);
 		addTrainTrack(-2500, 50);
 		addTrainTrack(-2650, 50);
+		addTrainTrack(-3050, 50);
+		addTrainTrack(-3300, 50);
 	}
 	
 	void shiftWorldDown(int amount) {

@@ -11,11 +11,13 @@ public class Car extends GameObject {
 	public boolean needImage = true;
 	public boolean gotImage = false;	
 	static Random random = new Random();
+	int startingX;
 	
 	Car(int x, int y, int width, int height, int speed) {
 		super(x, y, width, height);
 		this.speed = speed;
 		int carNum = random.nextInt(7);
+		startingX = x;
 		if(needImage) {
 			if(carNum == 0) {
 			loadImage("car.png");
@@ -47,7 +49,7 @@ public class Car extends GameObject {
 	
 	void update() {
 		x-=speed;
-		collisionBox.setRect(x, y, width, height);
+		collisionBox.setRect(x + width/6, y + height/6, width - width/3, height - height/3);
 	}
 	
 	void loadImage(String imageFile) {

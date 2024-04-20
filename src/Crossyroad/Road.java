@@ -12,7 +12,11 @@ public class Road extends GameObject {
 	
 	Road(int y,int height) {
 		super(0, y, Crossyroad.WIDTH, height);
-		addCar(ran.nextInt(350) + Crossyroad.WIDTH, y, ran.nextInt(101)+50, ran.nextInt(11)+3);
+		int speed = ran.nextInt(10)+3;
+		int width = ran.nextInt(51)+50;
+		int carX = ran.nextInt(350);
+		addCar(Crossyroad.WIDTH, y, width, speed);
+		addCar(Crossyroad.WIDTH + 400, y, width, speed);
 	}
 
 	void draw(Graphics g) {
@@ -30,9 +34,8 @@ public class Road extends GameObject {
 	void update() {
 		for(int i = 0; i<cars.size(); i++) {
 			cars.get(i).update();
-			if(cars.get(i).x <= -width) {
-				cars.remove(i);
-				addCar(ran.nextInt(350) + Crossyroad.WIDTH, y, ran.nextInt(101)+50, ran.nextInt(11)+3);
+			if(cars.get(i).x <= -cars.get(i).width) {
+				cars.get(i).x = Crossyroad.WIDTH;
 			}
 		}
 	}
