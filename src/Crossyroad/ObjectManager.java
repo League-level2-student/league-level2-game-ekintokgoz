@@ -1,5 +1,7 @@
 package Crossyroad;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.io.File;
 import java.util.ArrayList;
@@ -17,6 +19,7 @@ public class ObjectManager {
 	ArrayList <Road> roads = new ArrayList();
 	ArrayList <TrainTracks> tracks = new ArrayList();
 	public static ObjectManager manager;
+	Font subTitleFont = new Font("Arial", Font.ITALIC, 25);
 	
 	ObjectManager() {
 		manager=this;
@@ -41,6 +44,7 @@ public class ObjectManager {
 	void addTrainTrack(int y, int height) {
 		tracks.add(new TrainTracks(y, height));
 	}
+
 	
 	void draw(Graphics g) {
 		for(int i = 0; i<trees.size(); i++) {
@@ -51,9 +55,14 @@ public class ObjectManager {
 		}
 		for (TrainTracks t: tracks) {
 			t.draw(g);
-		}
+		}		
+		g.setColor(Color.red);
+		g.fillRect(0, Crossyroad.HEIGHT/2-25+(-3650-ObjectManager.manager.cam.y), Crossyroad.WIDTH, 50);
 		player.draw(g);
 		
+		g.setColor(Color.black);
+		g.setFont(subTitleFont);
+		g.drawString("Congratulations, you win!", 100, Crossyroad.HEIGHT/2-25+(-3800-ObjectManager.manager.cam.y));
 	}
 	
 	void update() {
@@ -155,6 +164,18 @@ public class ObjectManager {
 			addTree(400,-2700);
 			addTree(100,-2700);
 			addTree(150,-2700);
+			
+			addTree(0,-3700);
+			addTree(50,-3700);
+			addTree(100,-3700);
+			addTree(150,-3700);
+			addTree(200,-3700);
+			addTree(250,-3700);
+			addTree(300,-3700);
+			addTree(350,-3700);
+			addTree(400,-3700);
+			addTree(450,-3700);
+			
 	}
 	
 	void addRoads() {

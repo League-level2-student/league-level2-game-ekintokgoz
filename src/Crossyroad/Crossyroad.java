@@ -50,6 +50,7 @@ public class Crossyroad extends JPanel implements ActionListener, KeyListener {
 		objectManager.addTrees();
 		objectManager.addRoads();
 		objectManager.addTracks();
+		
 		frame.addKeyListener(this);
 		setBackground(new Color(108, 235, 120));
 	}
@@ -66,6 +67,8 @@ public class Crossyroad extends JPanel implements ActionListener, KeyListener {
 		g.drawString("CROSSYROAD", 100, 200);
 		g.setFont(subTitleFont);
 		g.drawString("Press Space to Start", 135, 350);
+		g.drawString("Use Arrow Keys to Move", 115, 500);
+		g.drawString("Avoid hitting cars and watch out for trains!", 20, 550);
 	}
 	void drawGameState(Graphics g) {
 		objectManager.draw(g);
